@@ -34,8 +34,6 @@ git remote add fork "${HEAD_URL}"
 git fetch fork "$HEAD_BRANCH"
 git checkout -b format-tmp-$HEAD_BRANCH "fork/$HEAD_BRANCH"
 
-bot_comment "I can do evil things now!"
-
 dev_tools/scripts/add_license.sh
 dev_tools/scripts/update_ginkgo_header.sh
 dev_tools/scripts/format_header.sh

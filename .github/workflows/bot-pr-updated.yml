@@ -6,7 +6,6 @@ name: OnSyncPR
 jobs:
   check-format:
     runs-on: ubuntu-18.04
-    if: github.event.pull_request.author_association == 'COLLABORATOR' || github.event.pull_request.author_association == 'MEMBER' || github.event.pull_request.author_association == 'OWNER'
     steps:
       - name: Checkout the latest code
         uses: actions/checkout@v2

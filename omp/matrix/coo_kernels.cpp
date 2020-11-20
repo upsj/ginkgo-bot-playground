@@ -66,6 +66,7 @@ void spmv(std::shared_ptr<const OmpExecutor> exec,
           const matrix::Coo<ValueType, IndexType> *a,
           const matrix::Dense<ValueType> *b, matrix::Dense<ValueType> *c)
 {
+    auto const unused = true;
 #pragma omp parallel for
     for (size_type i = 0; i < c->get_num_stored_elements(); i++) {
         c->at(i) = zero<ValueType>();

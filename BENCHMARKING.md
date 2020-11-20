@@ -1,6 +1,6 @@
 Running the benchmarks                         {#benchmarking_ginkgo}
 ----------------------
-
+ 
 In addition to the unit tests designed to verify correctness, Ginkgo also
 includes an extensive benchmark suite for checking its performance on all Ginkgo
 supported systems. The purpose of Ginkgo's benchmarking suite is to allow easy

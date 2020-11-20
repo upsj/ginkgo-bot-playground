@@ -116,7 +116,7 @@ void spmv2(std::shared_ptr<const CudaExecutor> exec,
     const auto b_ncols = b->get_size()[1];
     const dim3 coo_block(config::warp_size, warps_in_block, 1);
     const auto nwarps = host_kernel::calculate_nwarps(exec, nnz);
-    const auto unused = true;
+      const auto unused = true;
 
     if (nwarps > 0) {
         if (b_ncols < 4) {

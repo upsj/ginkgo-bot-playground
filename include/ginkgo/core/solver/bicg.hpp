@@ -62,8 +62,9 @@ namespace solver {
  * the capability to solve generic systems.
  *
  * BiCG is based on the bi-Lanczos tridiagonalization method and in exact
- * arithmetic should terminate in at most N iterations (2N MV's, with A and A^H).
- * It forms the basis of many of the cheaper methods such as BiCGSTAB and CGS.
+ * arithmetic should terminate in at most N iterations (2N MV's, with A and
+ * A^H). It forms the basis of many of the cheaper methods such as BiCGSTAB and
+ * CGS.
  *
  * Reference: R.Fletcher, Conjugate gradient methods for indefinite systems,
  * doi: 10.1007/BFb0080116

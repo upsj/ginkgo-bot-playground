@@ -30,9 +30,6 @@ THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT
 OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 ******************************<GINKGO LICENSE>*******************************/
 
-#include "cuda/factorization/par_ilut_select_common.cuh"
-
-
 #include "core/components/prefix_sum.hpp"
 #include "core/factorization/par_ilut_kernels.hpp"
 #include "cuda/base/math.hpp"
@@ -42,6 +39,7 @@ OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 #include "cuda/components/searching.cuh"
 #include "cuda/components/sorting.cuh"
 #include "cuda/components/thread_ids.cuh"
+#include "cuda/factorization/par_ilut_select_common.cuh"
 
 
 namespace gko {

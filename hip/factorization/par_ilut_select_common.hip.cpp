@@ -36,9 +36,6 @@ OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 // force-top: off
 
 
-#include "hip/factorization/par_ilut_select_common.hip.hpp"
-
-
 #include "core/components/prefix_sum.hpp"
 #include "core/factorization/par_ilut_kernels.hpp"
 #include "hip/base/math.hip.hpp"
@@ -48,6 +45,7 @@ OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 #include "hip/components/searching.hip.hpp"
 #include "hip/components/sorting.hip.hpp"
 #include "hip/components/thread_ids.hip.hpp"
+#include "hip/factorization/par_ilut_select_common.hip.hpp"
 
 
 namespace gko {

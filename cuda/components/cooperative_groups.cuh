@@ -34,10 +34,10 @@ OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 #define GKO_CUDA_COMPONENTS_COOPERATIVE_GROUPS_CUH_
 
 
+#include <cooperative_groups.h>
 #include <type_traits>
 
 
-#include <cooperative_groups.h>
 #include <cuda.h>
 
 

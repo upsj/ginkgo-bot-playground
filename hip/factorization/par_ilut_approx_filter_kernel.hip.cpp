@@ -30,13 +30,10 @@ THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT
 OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 ******************************<GINKGO LICENSE>*******************************/
 
-#include "core/factorization/par_ilut_kernels.hpp"
+#include <algorithm>
 
 
 #include <hip/hip_runtime.h>
-
-
-#include <algorithm>
 
 
 #include <ginkgo/core/base/array.hpp>

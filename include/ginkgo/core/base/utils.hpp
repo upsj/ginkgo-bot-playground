@@ -59,8 +59,7 @@ class Executor;
 namespace detail {
 
 
-template <typename T>
-struct pointee_impl {};
+template <typename T> struct pointee_impl {};
 
 template <typename T>
 struct pointee_impl<T *> {

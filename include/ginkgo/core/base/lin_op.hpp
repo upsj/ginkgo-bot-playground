@@ -978,7 +978,7 @@ public:                                                                      \
     mutable _name{__VA_ARGS__};                                              \
                                                                              \
     template <typename... Args>                                              \
-    auto with_##_name(Args &&..._value)                                      \
+    auto with_##_name(Args &&... _value)                                     \
         const->const std::decay_t<decltype(*this)> &                         \
     {                                                                        \
         using type = decltype(this->_name);                                  \
@@ -1029,7 +1029,7 @@ public:                                                                      \
     mutable _name{__VA_ARGS__};                                              \
                                                                              \
     template <typename... Args>                                              \
-    auto with_##_name(Args &&..._value)                                      \
+    auto with_##_name(Args &&... _value)                                     \
         const->const std::decay_t<decltype(*this)> &                         \
     {                                                                        \
         GKO_NOT_IMPLEMENTED;                                                 \
@@ -1058,7 +1058,7 @@ public:                                                                      \
     mutable _name{__VA_ARGS__};                                              \
                                                                              \
     template <typename... Args>                                              \
-    auto with_##_name(Args &&..._value)                                      \
+    auto with_##_name(Args &&... _value)                                     \
         const->const std::decay_t<decltype(*this)> &                         \
     {                                                                        \
         using type = decltype(this->_name);                                  \

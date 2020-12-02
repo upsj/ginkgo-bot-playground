@@ -79,7 +79,7 @@ struct dim {
      */
     template <typename... Rest>
     constexpr GKO_ATTRIBUTES dim(const dimension_type &first,
-                                 const Rest &...rest)
+                                 const Rest &... rest)
         : first_{first}, rest_{static_cast<dimension_type>(rest)...}
     {}
 

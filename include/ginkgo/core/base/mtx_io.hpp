@@ -110,7 +110,7 @@ void write_raw(std::ostream &os, const matrix_data<ValueType, IndexType> &data,
  * @return A MatrixType LinOp filled with data from filename
  */
 template <typename MatrixType, typename StreamType, typename... MatrixArgs>
-inline std::unique_ptr<MatrixType> read(StreamType &&is, MatrixArgs &&...args)
+inline std::unique_ptr<MatrixType> read(StreamType &&is, MatrixArgs &&... args)
 {
     auto mtx = MatrixType::create(std::forward<MatrixArgs>(args)...);
     mtx->read(read_raw<typename MatrixType::value_type,

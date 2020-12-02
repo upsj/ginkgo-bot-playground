@@ -116,7 +116,7 @@ public:
     // Remove the possibility of calling `create`, which was enabled by
     // `Composition`
     template <typename... Args>
-    static std::unique_ptr<Composition<ValueType>> create(Args &&...args) =
+    static std::unique_ptr<Composition<ValueType>> create(Args &&... args) =
         delete;
 
     GKO_CREATE_FACTORY_PARAMETERS(parameters, Factory)

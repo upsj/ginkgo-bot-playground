@@ -481,7 +481,7 @@ struct mock_free : T {
      * with `()` operator instead of `{}`.
      */
     template <typename... Params>
-    mock_free(Params &&...params) : T(std::forward<Params>(params)...)
+    mock_free(Params &&... params) : T(std::forward<Params>(params)...)
     {}
 
     void raw_free(void *ptr) const noexcept override

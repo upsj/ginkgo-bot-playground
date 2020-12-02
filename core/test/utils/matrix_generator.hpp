@@ -93,7 +93,7 @@ template <typename MatrixType = matrix::Dense<>, typename NonzeroDistribution,
 std::unique_ptr<MatrixType> generate_random_matrix(
     size_type num_rows, size_type num_cols, NonzeroDistribution &&nonzero_dist,
     ValueDistribution &&value_dist, Engine &&engine,
-    std::shared_ptr<const Executor> exec, MatrixArgs &&...args)
+    std::shared_ptr<const Executor> exec, MatrixArgs &&... args)
 {
     using value_type = typename MatrixType::value_type;
     using index_type = typename MatrixType::index_type;
@@ -151,7 +151,7 @@ template <typename MatrixType = matrix::Dense<>, typename NonzeroDistribution,
 std::unique_ptr<MatrixType> generate_random_sparsity_matrix(
     size_type num_rows, size_type num_cols, NonzeroDistribution &&nonzero_dist,
     typename MatrixType::value_type value, Engine &&engine,
-    std::shared_ptr<const Executor> exec, MatrixArgs &&...args)
+    std::shared_ptr<const Executor> exec, MatrixArgs &&... args)
 {
     using value_type = typename MatrixType::value_type;
     using index_type = typename MatrixType::index_type;
@@ -213,7 +213,7 @@ std::unique_ptr<MatrixType> generate_random_triangular_matrix(
     size_type num_rows, size_type num_cols, bool ones_on_diagonal,
     bool lower_triangular, NonzeroDistribution &&nonzero_dist,
     ValueDistribution &&value_dist, Engine &&engine,
-    std::shared_ptr<const Executor> exec, MatrixArgs &&...args)
+    std::shared_ptr<const Executor> exec, MatrixArgs &&... args)
 {
     using value_type = typename MatrixType::value_type;
     using index_type = typename MatrixType::index_type;
@@ -297,7 +297,8 @@ template <typename MatrixType = matrix::Dense<>, typename NonzeroDistribution,
 std::unique_ptr<MatrixType> generate_random_lower_triangular_matrix(
     size_type num_rows, size_type num_cols, bool ones_on_diagonal,
     NonzeroDistribution &&nonzero_dist, ValueDistribution &&value_dist,
-    Engine &&engine, std::shared_ptr<const Executor> exec, MatrixArgs &&...args)
+    Engine &&engine, std::shared_ptr<const Executor> exec,
+    MatrixArgs &&... args)
 {
     return generate_random_triangular_matrix<MatrixType>(
         num_rows, num_cols, ones_on_diagonal, true, nonzero_dist, value_dist,
@@ -330,7 +331,8 @@ template <typename MatrixType = matrix::Dense<>, typename NonzeroDistribution,
 std::unique_ptr<MatrixType> generate_random_upper_triangular_matrix(
     size_type num_rows, size_type num_cols, bool ones_on_diagonal,
     NonzeroDistribution &&nonzero_dist, ValueDistribution &&value_dist,
-    Engine &&engine, std::shared_ptr<const Executor> exec, MatrixArgs &&...args)
+    Engine &&engine, std::shared_ptr<const Executor> exec,
+    MatrixArgs &&... args)
 {
     return generate_random_triangular_matrix<MatrixType>(
         num_rows, num_cols, ones_on_diagonal, false, nonzero_dist, value_dist,

@@ -641,7 +641,7 @@ template <typename ConcreteType>
 class EnableCreateMethod {
 public:
     template <typename... Args>
-    static std::unique_ptr<ConcreteType> create(Args &&...args)
+    static std::unique_ptr<ConcreteType> create(Args &&... args)
     {
         return std::unique_ptr<ConcreteType>(
             new ConcreteType(std::forward<Args>(args)...));

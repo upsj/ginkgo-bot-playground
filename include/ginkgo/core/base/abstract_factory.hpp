@@ -89,7 +89,7 @@ public:
      * @return an instance of AbstractProductType
      */
     template <typename... Args>
-    std::unique_ptr<AbstractProductType> generate(Args &&...args) const
+    std::unique_ptr<AbstractProductType> generate(Args &&... args) const
     {
         auto product = this->generate_impl({std::forward<Args>(args)...});
         for (auto logger : this->loggers_) {
@@ -159,7 +159,7 @@ public:
     using components_type = typename PolymorphicBase::components_type;
 
     template <typename... Args>
-    std::unique_ptr<ProductType> generate(Args &&...args) const
+    std::unique_ptr<ProductType> generate(Args &&... args) const
     {
         auto product = std::unique_ptr<ProductType>(static_cast<ProductType *>(
             this->generate_impl({std::forward<Args>(args)...}).release()));

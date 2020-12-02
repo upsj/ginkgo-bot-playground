@@ -1,5 +1,7 @@
 #!/bin/bash
 
+set -x
+
 source .github/bot-pr-base.sh
 
 git remote add base "$BASE_URL"

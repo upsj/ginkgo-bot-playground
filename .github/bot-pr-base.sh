@@ -42,7 +42,7 @@ HEAD_URL="https://upsj:${BOT_TOKEN}@github.com/$HEAD_REPO"
 JOB_URL="https://github.com/$GITHUB_REPOSITORY/actions/runs/$GITHUB_RUN_ID"
 
 bot_delete_comments_matching() {
-  COMMENTS=$(api_get "$ISSUE_URL/comments" | jq -er '.[] | select((.user.login == "github-actions[bot]") and (.body | startswith('"\"$1\""'))) | .url')
+  COMMENTS=$(api_get "$ISSUE_URL/comments" | jq -r '.[] | select((.user.login == "github-actions[bot]") and (.body | startswith('"\"$1\""'))) | .url')
   for URL in $COMMENTS; do
     api_delete "$URL" > /dev/null
   done

@@ -30,8 +30,8 @@ THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT
 OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 ******************************<GINKGO LICENSE>*******************************/
 
-#ifndef GKO_CORE_BASE_MTX_IO_HPP_
-#define GKO_CORE_BASE_MTX_IO_HPP_
+#ifndef GKO_PUBLIC_CORE_BASE_MTX_IO_HPP_
+#define GKO_PUBLIC_CORE_BASE_MTX_IO_HPP_
 
 
 #include <istream>
@@ -110,7 +110,7 @@ void write_raw(std::ostream &os, const matrix_data<ValueType, IndexType> &data,
  * @return A MatrixType LinOp filled with data from filename
  */
 template <typename MatrixType, typename StreamType, typename... MatrixArgs>
-inline std::unique_ptr<MatrixType> read(StreamType &&is, MatrixArgs &&... args)
+inline std::unique_ptr<MatrixType> read(StreamType &&is, MatrixArgs &&...args)
 {
     auto mtx = MatrixType::create(std::forward<MatrixArgs>(args)...);
     mtx->read(read_raw<typename MatrixType::value_type,
@@ -145,4 +145,4 @@ inline void write(StreamType &&os, MatrixType *matrix,
 }  // namespace gko
 
 
-#endif  // GKO_CORE_BASE_MTX_IO_HPP_
+#endif  // GKO_PUBLIC_CORE_BASE_MTX_IO_HPP_

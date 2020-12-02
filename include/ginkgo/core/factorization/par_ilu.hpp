@@ -30,8 +30,8 @@ THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT
 OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 ******************************<GINKGO LICENSE>*******************************/
 
-#ifndef GKO_CORE_FACTORIZATION_PAR_ILU_HPP_
-#define GKO_CORE_FACTORIZATION_PAR_ILU_HPP_
+#ifndef GKO_PUBLIC_CORE_FACTORIZATION_PAR_ILU_HPP_
+#define GKO_PUBLIC_CORE_FACTORIZATION_PAR_ILU_HPP_
 
 
 #include <memory>
@@ -116,7 +116,7 @@ public:
     // Remove the possibility of calling `create`, which was enabled by
     // `Composition`
     template <typename... Args>
-    static std::unique_ptr<Composition<ValueType>> create(Args &&... args) =
+    static std::unique_ptr<Composition<ValueType>> create(Args &&...args) =
         delete;
 
     GKO_CREATE_FACTORY_PARAMETERS(parameters, Factory)
@@ -213,4 +213,4 @@ protected:
 }  // namespace gko
 
 
-#endif  // GKO_CORE_FACTORIZATION_PAR_ILU_HPP_
+#endif  // GKO_PUBLIC_CORE_FACTORIZATION_PAR_ILU_HPP_

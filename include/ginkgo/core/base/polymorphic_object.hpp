@@ -30,8 +30,8 @@ THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT
 OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 ******************************<GINKGO LICENSE>*******************************/
 
-#ifndef GKO_CORE_BASE_POLYMORPHIC_OBJECT_HPP_
-#define GKO_CORE_BASE_POLYMORPHIC_OBJECT_HPP_
+#ifndef GKO_PUBLIC_CORE_BASE_POLYMORPHIC_OBJECT_HPP_
+#define GKO_PUBLIC_CORE_BASE_POLYMORPHIC_OBJECT_HPP_
 
 
 #include <memory>
@@ -641,7 +641,7 @@ template <typename ConcreteType>
 class EnableCreateMethod {
 public:
     template <typename... Args>
-    static std::unique_ptr<ConcreteType> create(Args &&... args)
+    static std::unique_ptr<ConcreteType> create(Args &&...args)
     {
         return std::unique_ptr<ConcreteType>(
             new ConcreteType(std::forward<Args>(args)...));
@@ -652,4 +652,4 @@ public:
 }  // namespace gko
 
 
-#endif  // GKO_CORE_BASE_POLYMORPHIC_OBJECT_HPP_
+#endif  // GKO_PUBLIC_CORE_BASE_POLYMORPHIC_OBJECT_HPP_

@@ -30,8 +30,8 @@ THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT
 OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 ******************************<GINKGO LICENSE>*******************************/
 
-#ifndef GKO_CORE_BASE_COMPOSITION_HPP_
-#define GKO_CORE_BASE_COMPOSITION_HPP_
+#ifndef GKO_PUBLIC_CORE_BASE_COMPOSITION_HPP_
+#define GKO_PUBLIC_CORE_BASE_COMPOSITION_HPP_
 
 
 #include <vector>
@@ -75,8 +75,8 @@ public:
      *
      * @return a list of operators
      */
-    const std::vector<std::shared_ptr<const LinOp>> &get_operators() const
-        noexcept
+    const std::vector<std::shared_ptr<const LinOp>> &get_operators()
+        const noexcept
     {
         return operators_;
     }
@@ -133,7 +133,7 @@ protected:
      * @param rest  remainging operators
      */
     template <typename... Rest>
-    explicit Composition(std::shared_ptr<const LinOp> oper, Rest &&... rest)
+    explicit Composition(std::shared_ptr<const LinOp> oper, Rest &&...rest)
         : Composition(std::forward<Rest>(rest)...)
     {
         GKO_ASSERT_CONFORMANT(oper, operators_[0]);
@@ -170,4 +170,4 @@ private:
 }  // namespace gko
 
 
-#endif  // GKO_CORE_BASE_COMPOSITION_HPP_
+#endif  // GKO_PUBLIC_CORE_BASE_COMPOSITION_HPP_

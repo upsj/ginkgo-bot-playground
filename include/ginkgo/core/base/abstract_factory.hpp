@@ -30,8 +30,8 @@ THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT
 OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 ******************************<GINKGO LICENSE>*******************************/
 
-#ifndef GKO_CORE_BASE_ABSTRACT_FACTORY_HPP_
-#define GKO_CORE_BASE_ABSTRACT_FACTORY_HPP_
+#ifndef GKO_PUBLIC_CORE_BASE_ABSTRACT_FACTORY_HPP_
+#define GKO_PUBLIC_CORE_BASE_ABSTRACT_FACTORY_HPP_
 
 
 #include <ginkgo/core/base/polymorphic_object.hpp>
@@ -89,7 +89,7 @@ public:
      * @return an instance of AbstractProductType
      */
     template <typename... Args>
-    std::unique_ptr<AbstractProductType> generate(Args &&... args) const
+    std::unique_ptr<AbstractProductType> generate(Args &&...args) const
     {
         auto product = this->generate_impl({std::forward<Args>(args)...});
         for (auto logger : this->loggers_) {
@@ -159,7 +159,7 @@ public:
     using components_type = typename PolymorphicBase::components_type;
 
     template <typename... Args>
-    std::unique_ptr<ProductType> generate(Args &&... args) const
+    std::unique_ptr<ProductType> generate(Args &&...args) const
     {
         auto product = std::unique_ptr<ProductType>(static_cast<ProductType *>(
             this->generate_impl({std::forward<Args>(args)...}).release()));
@@ -289,4 +289,4 @@ protected:
 }  // namespace gko
 
 
-#endif  // GKO_CORE_BASE_ABSTRACT_FACTORY_HPP_
+#endif  // GKO_PUBLIC_CORE_BASE_ABSTRACT_FACTORY_HPP_

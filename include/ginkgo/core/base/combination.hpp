@@ -30,8 +30,8 @@ THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT
 OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 ******************************<GINKGO LICENSE>*******************************/
 
-#ifndef GKO_CORE_BASE_COMBINATION_HPP_
-#define GKO_CORE_BASE_COMBINATION_HPP_
+#ifndef GKO_PUBLIC_CORE_BASE_COMBINATION_HPP_
+#define GKO_PUBLIC_CORE_BASE_COMBINATION_HPP_
 
 
 #include <vector>
@@ -67,8 +67,8 @@ public:
      *
      * @return a list of coefficients
      */
-    const std::vector<std::shared_ptr<const LinOp>> &get_coefficients() const
-        noexcept
+    const std::vector<std::shared_ptr<const LinOp>> &get_coefficients()
+        const noexcept
     {
         return coefficients_;
     }
@@ -78,8 +78,8 @@ public:
      *
      * @return a list of operators
      */
-    const std::vector<std::shared_ptr<const LinOp>> &get_operators() const
-        noexcept
+    const std::vector<std::shared_ptr<const LinOp>> &get_operators()
+        const noexcept
     {
         return operators_;
     }
@@ -152,7 +152,7 @@ protected:
      */
     template <typename... Rest>
     explicit Combination(std::shared_ptr<const LinOp> coef,
-                         std::shared_ptr<const LinOp> oper, Rest &&... rest)
+                         std::shared_ptr<const LinOp> oper, Rest &&...rest)
         : Combination(std::forward<Rest>(rest)...)
     {
         GKO_ASSERT_EQUAL_DIMENSIONS(coef, dim<2>(1, 1));
@@ -207,4 +207,4 @@ private:
 }  // namespace gko
 
 
-#endif  // GKO_CORE_BASE_COMBINATION_HPP_
+#endif  // GKO_PUBLIC_CORE_BASE_COMBINATION_HPP_

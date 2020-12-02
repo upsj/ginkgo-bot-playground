@@ -30,8 +30,8 @@ THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT
 OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 ******************************<GINKGO LICENSE>*******************************/
 
-#ifndef GKO_CORE_MATRIX_DENSE_HPP_
-#define GKO_CORE_MATRIX_DENSE_HPP_
+#ifndef GKO_PUBLIC_CORE_MATRIX_DENSE_HPP_
+#define GKO_PUBLIC_CORE_MATRIX_DENSE_HPP_
 
 
 #include <initializer_list>
@@ -711,7 +711,7 @@ private:
 template <typename Matrix, typename... TArgs>
 std::unique_ptr<Matrix> initialize(
     size_type stride, std::initializer_list<typename Matrix::value_type> vals,
-    std::shared_ptr<const Executor> exec, TArgs &&... create_args)
+    std::shared_ptr<const Executor> exec, TArgs &&...create_args)
 {
     using dense = matrix::Dense<typename Matrix::value_type>;
     size_type num_rows = vals.size();
@@ -750,7 +750,7 @@ std::unique_ptr<Matrix> initialize(
 template <typename Matrix, typename... TArgs>
 std::unique_ptr<Matrix> initialize(
     std::initializer_list<typename Matrix::value_type> vals,
-    std::shared_ptr<const Executor> exec, TArgs &&... create_args)
+    std::shared_ptr<const Executor> exec, TArgs &&...create_args)
 {
     return initialize<Matrix>(1, vals, std::move(exec),
                               std::forward<TArgs>(create_args)...);
@@ -783,7 +783,7 @@ std::unique_ptr<Matrix> initialize(
     size_type stride,
     std::initializer_list<std::initializer_list<typename Matrix::value_type>>
         vals,
-    std::shared_ptr<const Executor> exec, TArgs &&... create_args)
+    std::shared_ptr<const Executor> exec, TArgs &&...create_args)
 {
     using dense = matrix::Dense<typename Matrix::value_type>;
     size_type num_rows = vals.size();
@@ -831,7 +831,7 @@ template <typename Matrix, typename... TArgs>
 std::unique_ptr<Matrix> initialize(
     std::initializer_list<std::initializer_list<typename Matrix::value_type>>
         vals,
-    std::shared_ptr<const Executor> exec, TArgs &&... create_args)
+    std::shared_ptr<const Executor> exec, TArgs &&...create_args)
 {
     return initialize<Matrix>(vals.size() > 0 ? begin(vals)->size() : 0, vals,
                               std::move(exec),
@@ -842,4 +842,4 @@ std::unique_ptr<Matrix> initialize(
 }  // namespace gko
 
 
-#endif  // GKO_CORE_MATRIX_DENSE_HPP_
+#endif  // GKO_PUBLIC_CORE_MATRIX_DENSE_HPP_

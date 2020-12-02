@@ -49,6 +49,7 @@ jobs:
     - name: Commit formatting changes
       env:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        BOT_TOKEN: ${{ secrets.BOT_TOKEN }}
       run: cp .github/format.sh /tmp && /tmp/format.sh
   rebase:
     name: rebase
@@ -63,4 +64,5 @@ jobs:
     - name: Automatic Rebase
       env:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        BOT_TOKEN: ${{ secrets.BOT_TOKEN }}
       run: cp .github/rebase.sh /tmp && /tmp/rebase.sh

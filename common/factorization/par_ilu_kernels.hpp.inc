@@ -48,7 +48,7 @@ __global__ __launch_bounds__(default_block_size) void compute_l_u_factors(
         const auto row = row_idxs[elem_id];
         const auto col = col_idxs[elem_id];
         const auto val = values[elem_id];
-         auto l_idx = l_row_ptrs[row];
+        auto l_idx = l_row_ptrs[row];
         auto u_idx = u_row_ptrs[col];
         ValueType sum{val};
         ValueType last_operation{};

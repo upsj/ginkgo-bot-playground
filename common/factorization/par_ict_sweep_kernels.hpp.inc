@@ -58,7 +58,7 @@ __global__ __launch_bounds__(default_block_size) void ict_sweep(
     auto a_idx =
         group_wide_search(a_row_begin, a_row_size, subwarp,
                           [&](IndexType i) { return a_col_idxs[i] >= col; });
-    bool has_a = a_idx < a_row_end && a_col_idxs[a_idx] == col;
+      bool has_a = a_idx < a_row_end && a_col_idxs[a_idx] == col;
     auto a_val = has_a ? a_vals[a_idx] : zero<ValueType>();
     auto l_row_begin = l_row_ptrs[row];
     auto l_row_size = l_row_ptrs[row + 1] - l_row_begin;

@@ -5,6 +5,8 @@ source .github/bot-pr-base.sh
 git remote add base "$BASE_URL"
 git remote add fork "$HEAD_URL"
 
+git remote -v
+
 git fetch base $BASE_BRANCH
 git fetch fork $HEAD_BRANCH
 

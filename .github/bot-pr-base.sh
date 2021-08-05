@@ -36,8 +36,8 @@ echo -n .
 HEAD_BRANCH=$(echo "$PR_JSON" | jq -er .head.ref)
 echo .
 
-BASE_URL="https://${GITHUB_ACTOR}:${GITHUB_TOKEN}@github.com/$BASE_REPO"
-HEAD_URL="https://${GITHUB_ACTOR}:${GITHUB_TOKEN}@github.com/$HEAD_REPO"
+BASE_URL="https://upsj:${GITHUB_TOKEN}@github.com/$BASE_REPO"
+HEAD_URL="https://upsj:${GITHUB_TOKEN}@github.com/$HEAD_REPO"
 
 JOB_URL="https://github.com/$GITHUB_REPOSITORY/actions/runs/$GITHUB_RUN_ID"
 

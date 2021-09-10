@@ -16,6 +16,11 @@ git config user.name "$USER_NAME"
 LOCAL_BRANCH=rebase-tmp-$HEAD_BRANCH
 git checkout -b $LOCAL_BRANCH fork/$HEAD_BRANCH
 
+# save scripts from develop
+pushd dev_tools/scripts
+cp add_license.sh format_header.sh update_ginkgo_header.sh /tmp
+popd
+
 bot_delete_comments_matching "Error: Rebase failed"
 
 # do the formatting rebase

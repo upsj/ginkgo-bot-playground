@@ -3,6 +3,8 @@
 source .github/bot-base.sh
 
 EXTENSION_REGEX='\.(cuh?|hpp|hpp\.inc?|cpp)$'
+FORMAT_HEADER_REGEX='^(benchmark|core|cuda|hip|include/ginkgo/core|omp|reference|dpcpp)/'
+FORMAT_REGEX='^(common|examples|test_install)/'
 
 echo -n "Collecting information on triggering PR"
 PR_URL=$(jq -r .pull_request.url "$GITHUB_EVENT_PATH")

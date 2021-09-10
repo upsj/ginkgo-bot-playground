@@ -24,19 +24,19 @@ popd
 bot_delete_comments_matching "Error: Rebase failed"
 
 # do the formatting rebase
-git rebase --exec "bash -c \"set -xe                                                                                 \
-    cp /tmp/add_license.sh /tmp/format_header.sh /tmp/update_ginkgo_header.sh dev_tools/scripts/;                    \
-    dev_tools/scripts/add_license.sh && dev_tools/scripts/update_ginkgo_header.sh;                                   \
-    git checkout dev_tools/scripts;                                                                                  \
-    git add .;                                                                                                       \
-    for f in \\\$(git diff --name-only --cached | grep -E '\$EXTENSION_REGEX' | grep -E '\$FORMAT_HEADER_REGEX'); do \
-        dev_tools/scripts/format_header.sh \\\$f;                                                                    \
-        git add \\\$f;                                                                                               \
-    done;                                                                                                            \
-    for f in \\\$(git diff --name-only --cached | grep -E '\$EXTENSION_REGEX' | grep -E '\$FORMAT_REGEX'); do        \
-        $CLANG_FORMAT -i \\\$f;                                                                                      \
-        git add \\\$f;                                                                                               \
-    done;                                                                                                            \
+git rebase --exec "bash -c \"set -xe                                                                              \
+    cp /tmp/add_license.sh /tmp/format_header.sh /tmp/update_ginkgo_header.sh dev_tools/scripts/;                 \
+    dev_tools/scripts/add_license.sh && dev_tools/scripts/update_ginkgo_header.sh;                                \
+    git checkout dev_tools/scripts;                                                                               \
+    git add .;                                                                                                    \
+    for f in \\\$(git diff --name-only HEAD~ | grep -E '\$EXTENSION_REGEX' | grep -E '\$FORMAT_HEADER_REGEX'); do \
+        dev_tools/scripts/format_header.sh \\\$f;                                                                 \
+        git add \\\$f;                                                                                            \
+    done;                                                                                                         \
+    for f in \\\$(git diff --name-only HEAD~ | grep -E '\$EXTENSION_REGEX' | grep -E '\$FORMAT_REGEX'); do        \
+        $CLANG_FORMAT -i \\\$f;                                                                                   \
+        git add \\\$f;                                                                                            \
+    done;                                                                                                         \
     git commit --amend --no-edit\"" base/$BASE_BRANCH 2>&1 || bot_error "Rebase failed, see the related [Action]($JOB_URL) for details"
 
 # push back

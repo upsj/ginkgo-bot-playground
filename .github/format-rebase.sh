@@ -31,15 +31,15 @@ git rebase --empty=drop --exec "bash -c \"set -xe                               
     dev_tools/scripts/add_license.sh && dev_tools/scripts/update_ginkgo_header.sh;                 \
     git checkout dev_tools/scripts;                                                                \
     git add .;                                                                                     \
-    for f in \\\$(bash -c $DIFF_COMMAND | grep -E '\$FORMAT_HEADER_REGEX'); do                     \
+    for f in \\\$(bash -c "$DIFF_COMMAND" | grep -E '\$FORMAT_HEADER_REGEX'); do                   \
         dev_tools/scripts/format_header.sh \\\$f;                                                  \
         git add \\\$f;                                                                             \
     done;                                                                                          \
-    for f in \\\$(bash -c $DIFF_COMMAND | grep -E '\$FORMAT_REGEX'); do                            \
+    for f in \\\$(bash -c "$DIFF_COMMAND" | grep -E '\$FORMAT_REGEX'); do                          \
         $CLANG_FORMAT -i \\\$f;                                                                    \
         git add \\\$f;                                                                             \
     done;                                                                                          \
-    git commit --amend --no-edit\"" base/$BASE_BRANCH 2>&1 || bot_error "Rebase failed, see the related [Action]($JOB_URL) for details"
+    git commit --amend --no-edit --allow-empty\"" base/$BASE_BRANCH 2>&1 || bot_error "Rebase failed, see the related [Action]($JOB_URL) for details"
 
 # push back
 git push --force-with-lease fork $LOCAL_BRANCH:$HEAD_BRANCH 2>&1 || bot_error "Cannot push rebased branch, are edits for maintainers allowed?"

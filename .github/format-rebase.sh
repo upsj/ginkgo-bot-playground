@@ -26,19 +26,13 @@ bot_delete_comments_matching "Error: Rebase failed"
 DIFF_COMMAND="git diff --name-only --no-renames --diff-filter=AM HEAD~ | grep -E '$EXTENSION_REGEX'"
 
 # do the formatting rebase
-git rebase --empty=drop --exec "cp /tmp/add_license.sh /tmp/format_header.sh /tmp/update_ginkgo_header.sh dev_tools/scripts/" \
-    --exec "dev_tools/scripts/add_license.sh && dev_tools/scripts/update_ginkgo_header.sh" \
-    --exec "git checkout dev_tools/scripts" \
-    --exec "git add ." \
-    --exec "for f in \$($DIFF_COMMAND | grep -E '$FORMAT_HEADER_REGEX'); do \
-                dev_tools/scripts/format_header.sh \$f; \
-                git add \$f; \
-            done" \
-    --exec "for f in \$($DIFF_COMMAND | grep -E '$FORMAT_REGEX'); do \
-                $CLANG_FORMAT -i \$f; \
-                git add \$f; \
-            done" \
-    --exec "git commit --amend --no-edit --allow-empty" base/$BASE_BRANCH 2>&1 || bot_error "Rebase failed, see the related [Action]($JOB_URL) for details"
+git rebase --empty=drop
+    --exec "cp /tmp/add_license.sh /tmp/format_header.sh /tmp/update_ginkgo_header.sh dev_tools/scripts/ && \
+            dev_tools/scripts/add_license.sh && dev_tools/scripts/update_ginkgo_header.sh" \
+    --exec "for f in \$($DIFF_COMMAND | grep -E '$FORMAT_HEADER_REGEX'); do dev_tools/scripts/format_header.sh \$f; done" \
+    --exec "for f in \$($DIFF_COMMAND | grep -E '$FORMAT_REGEX'); do $CLANG_FORMAT -i \$f; done" \
+    --exec "git checkout dev_tools/scripts && git add . && git commit --amend --no-edit --allow-empty" \
+    base/$BASE_BRANCH 2>&1 || bot_error "Rebase failed, see the related [Action]($JOB_URL) for details"
 
 # push back
 git push --force-with-lease fork $LOCAL_BRANCH:$HEAD_BRANCH 2>&1 || bot_error "Cannot push rebased branch, are edits for maintainers allowed?"

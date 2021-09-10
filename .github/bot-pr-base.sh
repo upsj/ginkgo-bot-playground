@@ -2,6 +2,8 @@
 
 source .github/bot-base.sh
 
+EXTENSION_REGEX='\.(cuh?|hpp|hpp\.inc?|cpp)$'
+
 echo -n "Collecting information on triggering PR"
 PR_URL=$(jq -r .pull_request.url "$GITHUB_EVENT_PATH")
 if [[ "$PR_URL" == "null" ]]; then

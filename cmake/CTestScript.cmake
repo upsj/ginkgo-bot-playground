@@ -1,4 +1,4 @@
-#.rst:
+#.rst: 
 # Ginkgo CTestScript
 # -------
 #

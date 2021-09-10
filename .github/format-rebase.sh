@@ -19,11 +19,11 @@ git checkout -b $LOCAL_BRANCH fork/$HEAD_BRANCH
 bot_delete_comments_matching "Error: Rebase failed"
 
 # do the formatting rebase
-git rebase --exec "echo -c \"                                                                                        \
+git rebase --exec "bash -c \"                                                                                        \
     for f in \\\$(git diff --name-only --cached | grep -E '\$EXTENSION_REGEX' | grep -E '\$FORMAT_HEADER_REGEX'); do \
         /tmp/format_header.sh \\\$f;                                                                                 \
         git add \\\$f;                                                                                               \
-    done\";                                                                                                          \
+    done;                                                                                                            \
     for f in \\\$(git diff --name-only --cached | grep -E '\$EXTENSION_REGEX' | grep -E '\$FORMAT_REGEX'); do        \
         $CLANG_FORMAT -i \\\$f;                                                                                      \
         git add \\\$f;                                                                                               \

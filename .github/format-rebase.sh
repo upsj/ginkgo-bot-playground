@@ -31,7 +31,9 @@ git rebase --exec "bash -c \"                                                   
     dev_tools/scripts/add_license.sh;                                                                                \
     dev_tools/scripts/update_ginkgo_header.sh;                                                                       \
     git checkout dev_tools/scripts;                                                                                  \
+    git status \
     git add .;                                                                                                       \
+    git status \
     for f in \\\$(git diff --name-only --cached | grep -E '\$EXTENSION_REGEX' | grep -E '\$FORMAT_HEADER_REGEX'); do \
         dev_tools/scripts/format_header.sh \\\$f;                                                                    \
         git add \\\$f;                                                                                               \

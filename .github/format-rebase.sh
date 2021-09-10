@@ -28,10 +28,10 @@ DIFF_COMMAND="git diff --name-only --no-renames --diff-filter=AM HEAD~ | grep -E
 # do the formatting rebase
 git rebase --empty=drop \
     --exec "cp /tmp/add_license.sh /tmp/format_header.sh /tmp/update_ginkgo_header.sh dev_tools/scripts/ && \
-            dev_tools/scripts/add_license.sh && dev_tools/scripts/update_ginkgo_header.sh" \
-    --exec "for f in \$($DIFF_COMMAND | grep -E '$FORMAT_HEADER_REGEX'); do dev_tools/scripts/format_header.sh \$f; done" \
-    --exec "for f in \$($DIFF_COMMAND | grep -E '$FORMAT_REGEX'); do $CLANG_FORMAT -i \$f; done" \
-    --exec "git checkout dev_tools/scripts && git add . && git commit --amend --no-edit --allow-empty" \
+            dev_tools/scripts/add_license.sh && dev_tools/scripts/update_ginkgo_header.sh && \
+            for f in \$($DIFF_COMMAND | grep -E '$FORMAT_HEADER_REGEX'); do dev_tools/scripts/format_header.sh \$f; done && \
+            for f in \$($DIFF_COMMAND | grep -E '$FORMAT_REGEX'); do $CLANG_FORMAT -i \$f; done && \
+            git checkout dev_tools/scripts && git add . && git commit --amend --no-edit --allow-empty" \
     base/$BASE_BRANCH 2>&1 || bot_error "Rebase failed, see the related [Action]($JOB_URL) for details"
 
 # push back

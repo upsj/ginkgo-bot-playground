@@ -34,7 +34,7 @@ git rebase --empty=drop --exec "cp /tmp/add_license.sh /tmp/format_header.sh /tm
                 dev_tools/scripts/format_header.sh \$f; \
                 git add \$f; \
             done" \
-    --exec "for f in \$(bash -c '$DIFF_COMMAND' | grep -E '$FORMAT_REGEX'); do \
+    --exec "for f in \$($DIFF_COMMAND | grep -E '$FORMAT_REGEX'); do \
                 $CLANG_FORMAT -i \$f; \
                 git add \$f; \
             done" \

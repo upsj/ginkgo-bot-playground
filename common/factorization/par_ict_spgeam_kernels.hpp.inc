@@ -108,7 +108,6 @@ __global__ __launch_bounds__(default_block_size) void ict_tri_spgeam_init(
     auto a_end = a_row_ptrs[row + 1];
     auto a_size = a_end - a_begin;
 
-    IndexType out_begin{};
     auto out_size = llh_size + a_size;
 
     IndexType l_new_begin = l_new_row_ptrs[row];

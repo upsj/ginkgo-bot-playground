@@ -28,7 +28,7 @@ git rebase --exec "bash -c \"                                                   
     git checkout dev_tools/scripts;                                                                                  \
     git add .;                                                                                                       \
     for f in \\\$(git diff --name-only --cached | grep -E '\$EXTENSION_REGEX' | grep -E '\$FORMAT_HEADER_REGEX'); do \
-        /tmp/format_header.sh \\\$f;                                                                                 \
+        dev_tools/scripts/format_header.sh \\\$f;                                                                    \
         git add \\\$f;                                                                                               \
     done;                                                                                                            \
     for f in \\\$(git diff --name-only --cached | grep -E '\$EXTENSION_REGEX' | grep -E '\$FORMAT_REGEX'); do        \

@@ -26,7 +26,7 @@ bot_delete_comments_matching "Error: Rebase failed"
 DIFF_COMMAND="git diff --name-only --no-renames --diff-filter=AM HEAD~ | grep -E '$EXTENSION_REGEX'"
 
 # do the formatting rebase
-git rebase --empty=drop \
+git rebase --empty=drop --no-keep-empty \
     --exec "cp /tmp/add_license.sh /tmp/format_header.sh /tmp/update_ginkgo_header.sh dev_tools/scripts/ && \
             dev_tools/scripts/add_license.sh && dev_tools/scripts/update_ginkgo_header.sh && \
             for f in \$($DIFF_COMMAND | grep -E '$FORMAT_HEADER_REGEX'); do dev_tools/scripts/format_header.sh \$f; done && \

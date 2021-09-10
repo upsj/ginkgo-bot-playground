@@ -40,7 +40,6 @@ version version_info::get_reference_version() noexcept
 {
     // We just return the version with a special "not compiled" tag in
     // placeholder modules.
-    return {GKO_VERSION_STR, "not compiled"};
 }
 
 

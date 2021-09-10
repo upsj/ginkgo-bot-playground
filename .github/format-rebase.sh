@@ -23,7 +23,7 @@ popd
 
 bot_delete_comments_matching "Error: Rebase failed"
 
-DIFF_COMMAND="git diff --name-only --no-renames --diff-filter=AM HEAD~ | grep -E '\$EXTENSION_REGEX'"
+DIFF_COMMAND="git diff --name-only --no-renames --diff-filter=AM HEAD~ | grep -E '\\\$EXTENSION_REGEX'"
 
 # do the formatting rebase
 git rebase --empty=drop --exec "bash -c \"set -xe                                                  \

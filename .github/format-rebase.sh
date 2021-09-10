@@ -20,6 +20,13 @@ bot_delete_comments_matching "Error: Rebase failed"
 
 # do the formatting rebase
 git rebase --exec "bash -c \"                                                                                        \
+    cp /tmp/add_license.sh dev_tools/scripts/;                                                                       \
+    cp /tmp/format_header.sh dev_tools/scripts/;                                                                     \
+    cp /tmp/update_ginkgo_header.sh dev_tools/scripts/;                                                              \
+    dev_tools/scripts/add_license.sh;                                                                                \
+    dev_tools/scripts/update_ginkgo_header.sh;                                                                       \
+    git checkout dev_tools/scripts;                                                                                  \
+    git add .;                                                                                                       \
     for f in \\\$(git diff --name-only --cached | grep -E '\$EXTENSION_REGEX' | grep -E '\$FORMAT_HEADER_REGEX'); do \
         /tmp/format_header.sh \\\$f;                                                                                 \
         git add \\\$f;                                                                                               \

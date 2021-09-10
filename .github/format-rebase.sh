@@ -19,7 +19,7 @@ git checkout -b $LOCAL_BRANCH fork/$HEAD_BRANCH
 bot_delete_comments_matching "Error: Rebase failed"
 
 # do the formatting rebase
-git rebase --exec "bash -c \"                                                                                        \
+git rebase --exec "echo -c \"                                                                                        \
     for f in \\\$(git diff --name-only --cached | grep -E '\$EXTENSION_REGEX' | grep -E '\$FORMAT_HEADER_REGEX'); do \
         /tmp/format_header.sh \\\$f;                                                                                 \
         git add \\\$f;                                                                                               \
@@ -28,6 +28,6 @@ git rebase --exec "bash -c \"                                                   
         $CLANG_FORMAT -i \\\$f;                                                                                      \
         git add \\\$f;                                                                                               \
     done\"" base/$BASE_BRANCH 2>&1 || bot_error "Rebase failed, see the related [Action]($JOB_URL) for details"
-
+exit 1
 # push back
 git push --force-with-lease fork $LOCAL_BRANCH:$HEAD_BRANCH 2>&1 || bot_error "Cannot push rebased branch, are edits for maintainers allowed?"

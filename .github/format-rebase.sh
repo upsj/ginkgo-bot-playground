@@ -33,11 +33,11 @@ git rebase --empty=drop --exec "cp /tmp/add_license.sh /tmp/format_header.sh /tm
     --exec "for f in \$($DIFF_COMMAND | grep -E '$FORMAT_HEADER_REGEX'); do \
                 dev_tools/scripts/format_header.sh \$f; \
                 git add \$f; \
-            done"
+            done" \
     --exec "for f in \$(bash -c '$DIFF_COMMAND' | grep -E '$FORMAT_REGEX'); do \
                 $CLANG_FORMAT -i \$f; \
                 git add \$f; \
-            done"
+            done" \
     --exec "git commit --amend --no-edit --allow-empty" base/$BASE_BRANCH 2>&1 || bot_error "Rebase failed, see the related [Action]($JOB_URL) for details"
 
 # push back

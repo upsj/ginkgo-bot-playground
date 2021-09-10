@@ -23,7 +23,7 @@ popd
 
 bot_delete_comments_matching "Error: Rebase failed"
 
-DIFF_COMMAND="git diff --name-only --no-renames --diff-filter=AM HEAD~ | grep -E '\\\$EXTENSION_REGEX'"
+DIFF_COMMAND="git diff --name-only --no-renames --diff-filter=AM HEAD~"
 
 # do the formatting rebase
 git rebase --empty=drop --exec "bash -c \"set -xe                                                  \
@@ -31,11 +31,11 @@ git rebase --empty=drop --exec "bash -c \"set -xe                               
     dev_tools/scripts/add_license.sh && dev_tools/scripts/update_ginkgo_header.sh;                 \
     git checkout dev_tools/scripts;                                                                \
     git add .;                                                                                     \
-    for f in \\\$(bash -c '$DIFF_COMMAND' | grep -E '\$FORMAT_HEADER_REGEX'); do                   \
+    for f in \\\$(bash -c '$DIFF_COMMAND' | grep -E '\$EXTENSION_REGEX' | grep -E '\$FORMAT_HEADER_REGEX'); do                   \
         dev_tools/scripts/format_header.sh \\\$f;                                                  \
         git add \\\$f;                                                                             \
     done;                                                                                          \
-    for f in \\\$(bash -c '$DIFF_COMMAND' | grep -E '\$FORMAT_REGEX'); do                          \
+    for f in \\\$(bash -c '$DIFF_COMMAND' | grep -E '\$EXTENSION_REGEX' | grep -E '\$FORMAT_REGEX'); do                          \
         $CLANG_FORMAT -i \\\$f;                                                                    \
         git add \\\$f;                                                                             \
     done;                                                                                          \

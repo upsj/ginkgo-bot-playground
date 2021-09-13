@@ -31,7 +31,7 @@ git rebase --empty=drop --no-keep-empty \
             dev_tools/scripts/add_license.sh && dev_tools/scripts/update_ginkgo_header.sh && \
             for f in \$($DIFF_COMMAND | grep -E '$FORMAT_HEADER_REGEX'); do dev_tools/scripts/format_header.sh \$f; done && \
             for f in \$($DIFF_COMMAND | grep -E '$FORMAT_REGEX'); do $CLANG_FORMAT -i \$f; done && \
-            git checkout dev_tools/scripts  && (git diff >> /tmp/difflog; true) && git commit -a --amend --no-edit --allow-empty" \
+            git checkout dev_tools/scripts  && (git diff >> /tmp/difflog; true) && (git diff --quiet || git commit -a --amend --no-edit --allow-empty)" \
     base/$BASE_BRANCH 2>&1 || bot_error "Rebase failed, see the related [Action]($JOB_URL) for details"
 
 # repeat rebase to delete empty commits

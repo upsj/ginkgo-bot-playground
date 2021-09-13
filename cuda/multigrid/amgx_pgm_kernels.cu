@@ -60,7 +60,7 @@ OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
 namespace gko {
 namespace kernels {
-namespace cuda {
+namespace cudaa {
 /**
  * @brief The AMGX_PGM solver namespace.
  *
@@ -173,6 +173,6 @@ GKO_INSTANTIATE_FOR_EACH_NON_COMPLEX_VALUE_AND_INDEX_TYPE(
 
 
 }  // namespace amgx_pgm
-}  // namespace cuda
+}  // namespace cudaa
 }  // namespace kernels
 }  // namespace gko

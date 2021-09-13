@@ -34,7 +34,7 @@ git rebase --empty=drop --no-keep-empty \
             git checkout dev_tools/scripts  && (git diff >> /tmp/difflog; true) && git add . && git commit --amend --no-edit --allow-empty" \
     base/$BASE_BRANCH 2>&1 || bot_error "Rebase failed, see the related [Action]($JOB_URL) for details"
 
-cp /tmp/difflog .
+cp /tmp/difflog diff.patch
 
 if [ -s diff.patch ]
 then

@@ -66,6 +66,7 @@ void convert_matrix(const gko::LinOp *matrix_from, const char *format_to,
 {
     try {
         auto &conversion_case = test_case["conversions"];
+
         add_or_set_member(conversion_case, conversion_name,
                           rapidjson::Value(rapidjson::kObjectType), allocator);
 

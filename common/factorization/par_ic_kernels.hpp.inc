@@ -44,6 +44,7 @@ __global__ __launch_bounds__(default_block_size) void ic_init(
     }
     auto l_nz = l_row_ptrs[row + 1] - 1;
     auto diag = sqrt(l_vals[l_nz]);
+
     if (is_finite(diag)) {
         l_vals[l_nz] = diag;
     } else {

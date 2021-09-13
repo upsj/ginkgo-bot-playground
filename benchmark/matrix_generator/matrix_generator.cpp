@@ -139,7 +139,6 @@ int main(int argc, char *argv[])
     if (!configurations.IsArray()) {
         print_config_error_and_exit(1);
     }
-
     for (auto &config : configurations.GetArray()) {
         try {
             validate_option_object(config);

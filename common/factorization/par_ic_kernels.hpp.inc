@@ -42,6 +42,7 @@ __global__ __launch_bounds__(default_block_size) void ic_init(
     if (row >= num_rows) {
         return;
     }
+
     auto l_nz = l_row_ptrs[row + 1] - 1;
     auto diag = sqrt(l_vals[l_nz]);
 
@@ -51,7 +52,6 @@ __global__ __launch_bounds__(default_block_size) void ic_init(
         l_vals[l_nz] = one<ValueType>();
     }
 }
-
 
 template <typename ValueType, typename IndexType>
 __global__ __launch_bounds__(default_block_size) void ic_sweep(

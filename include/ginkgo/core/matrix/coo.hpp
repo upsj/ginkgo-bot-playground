@@ -47,6 +47,8 @@ namespace gko {
 namespace matrix {
 
 
+
+
 template <typename ValueType, typename IndexType>
 class Csr;
 

@@ -44,8 +44,13 @@ jobs:
         mkdir build-old
         cmake -B build-new new ${{ env.CMAKE_FLAGS }}
         cmake -B build-old old ${{ env.CMAKE_FLAGS }}
-        cmake --build build-new -j4 &
-        cmake --build build-old -j4 &
-        wait
+        cmake --build build-new -j`nproc`
+        cmake --build build-old -j`nproc`
     - name: Compute abidiff
-      run: abidiff build-old/lib/libginkgod.so build-new/lib/libginkgod.so
+      run: abidiff build-old/lib/libginkgod.so build-new/lib/libginkgod.so &> abi.diff
+    - name: Upload ABI diff
+      if: failure()
+      uses: actions/upload-artifact@v2
+      with:
+          name: abi
+          path: abi.diff

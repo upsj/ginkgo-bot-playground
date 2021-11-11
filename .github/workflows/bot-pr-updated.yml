@@ -1,5 +1,5 @@
 on:
-  pull_request:
+  pull_request_target:
     types: [opened,synchronize]
 
 name: OnSyncPR
@@ -24,6 +24,7 @@ jobs:
           path: format.patch
   abidiff:
     runs-on: ubuntu-latest
+    if: github.event.pull_request.author_association == 'COLLABORATOR' || github.event.pull_request.author_association == 'MEMBER' || github.event.pull_request.author_association == 'OWNER'
     env:
       CMAKE_FLAGS: -DBUILD_SHARED_LIBS=ON -DCMAKE_BUILD_TYPE=DEBUG -DGINKGO_BUILD_TESTS=OFF -DGINKGO_BUILD_EXAMPLES=OFF -DGINKGO_BUILD_BENCHMARKS=OFF -DGINKGO_BUILD_HWLOC=OFF -DGINKGO_BUILD_REFERENCE=OFF -DGINKGO_BUILD_OMP=OFF -DGINKGO_BUILD_CUDA=OFF -DGINKGO_BUILD_DPCPP=OFF
     steps:
@@ -31,6 +32,7 @@ jobs:
       uses: actions/checkout@v2
       with:
         path: new
+        ref: ${{ github.event.pull_request.head.ref }}
     - name: Checkout the old code (shallow clone)
       uses: actions/checkout@v2
       with:

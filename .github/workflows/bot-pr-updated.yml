@@ -49,7 +49,7 @@ jobs:
         cmake --build build-new -j`nproc`
         cmake --build build-old -j`nproc`
     - name: Compute abidiff
-      run: abidiff build-old/lib/libginkgod.so build-new/lib/libginkgod.so &> abi.diff
+      run: abidiff --headers-dir1 old/include --headers-dir2 new/include build-old/lib/libginkgod.so build-new/lib/libginkgod.so &> abi.diff
     - name: Upload ABI diff
       if: failure()
       uses: actions/upload-artifact@v2

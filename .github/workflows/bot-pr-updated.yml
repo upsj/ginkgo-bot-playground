@@ -49,7 +49,10 @@ jobs:
         cmake --build build-new -j`nproc`
         cmake --build build-old -j`nproc`
     - name: Compute abidiff
-      run: abidiff --headers-dir1 old/include --headers-dir2 new/include --drop-private-types --leaf-changes-only --impacted-interfaces build-old/lib/libginkgod.so build-new/lib/libginkgod.so &> abi.diff
+      run: |
+        source old/.github/bot-pr-base.sh
+        bot_delete_comments_matching "This PR changes the Ginkgo ABI"
+        abidiff build-old/lib/libginkgod.so build-new/lib/libginkgod.so &> abi.diff || bot_error "This PR changes the Ginkgo ABI:\n```\n$(head -n2 abi.diff)\n```\nFor details check the full ABI diff under **Artifacts** [here]($JOB_URL)"
     - name: Upload ABI diff
       if: failure()
       uses: actions/upload-artifact@v2

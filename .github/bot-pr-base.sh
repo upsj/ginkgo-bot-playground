@@ -45,12 +45,12 @@ bot_delete_comments_matching() {
   local search_matching="$1"
   COMMENTS=$(api_get "$ISSUE_URL/comments" | jq -r '.[] | select((.user.login == "upsj") and (.body | startswith('"\"$search_matching\""'))) | .url')
   for URL in $COMMENTS; do
-    api_delete "$URL"
+    api_delete "$URL" > /dev/null
   done
 }
 
 bot_comment() {
-  api_post "$ISSUE_URL/comments" "{\"body\":\"$1\"}"
+  api_post "$ISSUE_URL/comments" "{\"body\":\"$1\"}" > /dev/null
 }
 
 bot_error() {

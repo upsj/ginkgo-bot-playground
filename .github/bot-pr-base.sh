@@ -45,12 +45,12 @@ bot_delete_comments_matching() {
   local search_matching="$1"
   COMMENTS=$(api_get "$ISSUE_URL/comments" | jq -r '.[] | select((.user.login == "ginkgo-bot") and (.body | startswith('"\"$search_matching\""'))) | .url')
   for URL in $COMMENTS; do
-    api_delete "$URL" > /dev/null
+    api_delete "$URL"
   done
 }
 
 bot_comment() {
-  api_post "$ISSUE_URL/comments" "{\"body\":\"$1\"}" > /dev/null
+  api_post "$ISSUE_URL/comments" "{\"body\":\"$1\"}"
 }
 
 bot_error() {

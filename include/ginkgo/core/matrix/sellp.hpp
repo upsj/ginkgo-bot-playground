@@ -348,6 +348,7 @@ private:
     Array<index_type> col_idxs_{0};
     Array<size_type> slice_lengths_{0};
     Array<size_type> slice_sets_{0};
+    int dummy;
     size_type slice_size_;
     size_type stride_factor_;
     size_type total_cols_{0};

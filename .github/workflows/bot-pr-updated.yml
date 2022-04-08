@@ -15,7 +15,7 @@ jobs:
       - name: Check for formatting changes
         env:
           GITHUB_TOKEN: ${{ secrets.BOT_TOKEN }}
-        run: cp .github/check-format.sh /tmp && /tmp/check-format.sh
+        run: echo "${{ github.workflow }}-${{ github.ref }}" && cp .github/check-format.sh /tmp && /tmp/check-format.sh
       - name: Upload code formatting patch
         if: failure()
         uses: actions/upload-artifact@v2

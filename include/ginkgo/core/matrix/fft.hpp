@@ -131,8 +131,8 @@ protected:
                     LinOp* x) const override;
 
 private:
-    mutable Array<char> buffer_;
     bool inverse_;
+    mutable Array<char> buffer_;
 };
 
 

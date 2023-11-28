@@ -4,7 +4,7 @@ set(GINKGO_HAS_CUDA OFF)
 set(GINKGO_HAS_SYCL OFF)
 set(GINKGO_HAS_HIP OFF)
 
-include(CheckLanguage)
+ include(CheckLanguage)
 
 if (NOT DEFINED GINKGO_BUILD_OMP)
     find_package(OpenMP 3.0)

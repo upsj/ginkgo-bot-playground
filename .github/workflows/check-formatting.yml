@@ -9,10 +9,10 @@ jobs:
       - name: Checkout the latest code (shallow clone)
         uses: actions/checkout@v4
       - name: Run Pre-Commit checks
-        run: cp .github/check-format.sh /tmp && /tmp/check-format.sh
-        id: pre-commit
         env:
           GITHUB_TOKEN: ${{ secrets.BOT_TOKEN }}
+        run: cp .github/check-format.sh /tmp && /tmp/check-format.sh
+        id: pre-commit
       - name: Upload code formatting patch
         if: ${{ failure() }}
         uses: actions/upload-artifact@v3

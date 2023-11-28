@@ -20,7 +20,7 @@
 
 namespace gko {
 namespace kernels {
-namespace cuda {
+  namespace cuda {
 namespace partition {
 
 

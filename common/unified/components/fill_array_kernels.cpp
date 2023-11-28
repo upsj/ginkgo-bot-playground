@@ -10,7 +10,7 @@
 
 namespace gko {
 namespace kernels {
-namespace GKO_DEVICE_NAMESPACE {
+  namespace GKO_DEVICE_NAMESPACE {
 namespace components {
 
 

@@ -21,7 +21,7 @@
 #include "benchmark/utils/types.hpp"
 
 
-namespace formats {
+   namespace formats {
 
 
 std::string available_format =

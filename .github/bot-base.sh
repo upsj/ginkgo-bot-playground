@@ -5,6 +5,8 @@ set -e
 API_HEADER="Accept: application/vnd.github.v3+json"
 AUTH_HEADER="Authorization: token $GITHUB_TOKEN"
 
+echo $GITHUB_TOKEN | wc -c
+
 api_get() {
   if [[ "$RUNNER_DEBUG" == "1" ]]; then
       curl -X GET -s -H "${AUTH_HEADER}" -H "${API_HEADER}" "$1" > $RUNNER_TEMP/output.json
